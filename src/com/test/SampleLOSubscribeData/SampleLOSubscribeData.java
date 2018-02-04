@@ -19,7 +19,7 @@ public class SampleLOSubscribeData {
 	
 	/*
 	 * 
-	 * Subscribe as an application (mode json+bridge) to the topic : "~event/v1/data/new/#"
+	 * Subscribe as an application (mode json+bridge) to the topic : "~event/v1/data/new/#" 
 	 * 
 	 */
 	public static void main(String[] args) {
