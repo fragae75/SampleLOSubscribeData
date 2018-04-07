@@ -4,6 +4,9 @@ Sample application for Datavenue Live Objects : https://liveobjects.orange-busin
 
 It is a simple sample that collect a MQTT data from Live Objects as an application ("payload+bridge")
 
+
+<h2> Installation notes </h2>
+
 1) Create an account on Live Objects. You can get a free account (10 MQTT devices for 1 year) at : https://liveobjects.orange-business.com/#/request_account <br>
 Don't check "Lora" otherwise the account will not be instantly created.
 
@@ -18,6 +21,7 @@ public final class MyKey { <br>
 }<br>
 
 4) You will find into the repository 4 jar files into the /lib. Add them as "external JARs" into you IDE (eg Eclipse).
+
 
 If you need to generate data, use the SampleLOSendData sample or the Android app at : https://play.google.com/store/apps/details?id=com.orange.lo.assetdemo
 
