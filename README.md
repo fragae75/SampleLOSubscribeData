@@ -14,11 +14,11 @@ Don't check "Lora" otherwise the account will not be instantly created.
 
 3) Create a MyKey class : 
 
-package com.test.SampleLOSendData; <br>
+	package com.test.SampleLOSendData; 
 
-public final class MyKey { <br>
-	static String key = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"; <br>
-}<br>
+	public final class MyKey { 
+		static String key = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"; 
+	}
 
 4) You will find into the repository 4 jar files into the /lib. Add them as "external JARs" into you IDE (eg Eclipse).
 
