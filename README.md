@@ -14,7 +14,7 @@ Don't check "Lora" otherwise the account will not be instantly created.
 
 3) create a route that will bind your source with the Fifo, use the portal (<a>https://liveobjects.orange-business.com/#/datastore/routing</a>) or the API (<a>https://liveobjects.orange-business.com/swagger-ui/index.html#!/Triggers_and_Actions/createUsingPOST_1</a>)
 
-4) Generate your Application API key : menu Configuration/API Keys (<a>https://liveobjects.orange-business.com/#/config/apikeys</a>) click on "Add", select 'Application' rights
+4) Generate your Application API key : menu Configuration/API Keys (<a>https://liveobjects.orange-business.com/#/config/apikeys</a>) click on "Add", select 'Application' profile rights
 
 5) Create a MyKey class with the generated API key: 
 
