@@ -18,18 +18,20 @@ import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
  */
 public class RunConsumeQueue implements Runnable {
 
-	private String sTopicName;
+	private String sFifoName;
 	private String sAPIKey;
 	private String sServerAddress;
+	private String sMQTTUserName;
     private MqttClient mqttClient = null;
 	
 	/*
-	 * Constructor : just keep the topic
+	 * Constructor 
 	 */
-    public RunConsumeQueue(	String sTopicName, String sAPIKey, String sServerAddress){
-		this.sTopicName = sTopicName;
+    public RunConsumeQueue(	String sFifoName, String sAPIKey, String sServerAddress, String sMQTTUserName){
+		this.sFifoName = sFifoName;
 		this.sAPIKey = sAPIKey;
 		this.sServerAddress = sServerAddress;
+		this.sMQTTUserName = sMQTTUserName;
 	}
 	
 	/*
@@ -37,12 +39,12 @@ public class RunConsumeQueue implements Runnable {
 	 */
 	public void finalize(){
 		
-        System.out.println(sTopicName + " - Finalize");
+        System.out.println(sFifoName + " - Finalize");
         // close client
         if (mqttClient != null && mqttClient.isConnected()) {
             try {
                 mqttClient.disconnect();
-	            System.out.println(sTopicName + " - Queue Disconnected");
+	            System.out.println(sFifoName + " - Fifo Disconnected");
             } catch (MqttException e) {
                 e.printStackTrace();
             }
@@ -51,8 +53,7 @@ public class RunConsumeQueue implements Runnable {
 	
 	
     /**
-     * Basic "MqttCallback" that handles messages as JSON device commands,
-     * and immediately respond.
+     * Basic "MqttCallback" that handles messages and print them
      */
     public static class SimpleMqttCallback implements MqttCallback {
         private MqttClient mqttClient;
@@ -88,18 +89,18 @@ public class RunConsumeQueue implements Runnable {
             mqttClient.setCallback(new SimpleMqttCallback(mqttClient));
 
             MqttConnectOptions connOpts = new MqttConnectOptions();
-            connOpts.setUserName("payload+bridge"); // selecting mode "Bridge"
+            connOpts.setUserName(sMQTTUserName); 
             connOpts.setPassword(sAPIKey.toCharArray()); // passing API key value as password
             connOpts.setCleanSession(true);
 
             // Connection
-            System.out.printf("Subscribe - Connecting to broker: %s ...\n", sServerAddress);
+            System.out.printf("Connecting to the broker: %s as '%s'...\n", sServerAddress, sMQTTUserName);
             mqttClient.connect(connOpts);
-            System.out.println("Subscribe ... connected.");
+            System.out.println("... connected.");
 
             // Subscribe to data
-            System.out.printf("Consuming from Router or fifo with filter '%s'...\n", sTopicName);
-            mqttClient.subscribe(sTopicName);
+            System.out.printf("Subscribing to the fifo %s\n", sFifoName);
+            mqttClient.subscribe(sFifoName);
             System.out.println("... subscribed.");
 
             synchronized (mqttClient) {
