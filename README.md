@@ -1,6 +1,6 @@
 # SampleLOSubscribeData
 
-Sample application for Datavenue Live Objects : https://liveobjects.orange-business.com/#/liveobjects
+Sample application for Datavenue Live Objects <a>https://liveobjects.orange-business.com</a>
 
 It is a simple sample that collect a MQTT data from Live Objects as an application
 
