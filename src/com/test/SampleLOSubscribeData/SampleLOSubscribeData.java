@@ -22,12 +22,12 @@ public class SampleLOSubscribeData {
 	 * Subscribe to the MQTT broker as an application 
 	 * 
 	 * Reminder:
-	 * 1) create a Fifo (here testFifo) which will collect and buffer the data, use the portal (or the API) : https://liveobjects.orange-business.com/#/datastore/fifo
+	 * 1) in Live Objects create a Fifo (here testFifo) which will collect and buffer the data, use the portal (or the API) : https://liveobjects.orange-business.com/#/datastore/fifo
 	 * 2) create a route that will bind your source with the Fifo, use the portal (or the API) : https://liveobjects.orange-business.com/#/datastore/routing
 	 * 3) connect your MQTT client to Live Objects with 'application' user name (see RunConsumeQueue.java)
 	 * 
 	 * Note : The 'bridge' user name ('json+bridge' and 'payload+bridge') will be deprecated end 2019. Therefore 
-	 *  the topic : '~event/v1/data/new/#' will no longer be supported
+	 *  all the topics like : '~event/v1/data/new/#' will no longer be supported
 	 * 
 	 */
 	public static void main(String[] args) {
